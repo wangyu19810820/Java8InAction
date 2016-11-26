@@ -3,6 +3,7 @@ package chapter6;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import chapter4.Dish;
@@ -18,12 +19,14 @@ public class Test {
 //		Long count = list.stream().collect(Collectors.counting());
 //		System.out.println(count);
 		
-//		IntSummaryStatistics dish = 
 		list.stream().collect(
-			Collectors.reducing(0.0, Dish::getCalories, (Double i, Double j)->{return i+j;})
+			Collectors.reducing(0.0, Dish::getCalories, Double::sum)
 		);
 //		System.out.println(dish.getCalories());
-		
+		Optional<Double> opt = list.stream().map(d->d.getCalories()).collect(
+				Collectors.reducing(Double::sum)
+		);
+		System.out.println(opt.get());
 		
 //		double avg = list.stream().collect(Collectors.averagingDouble(Dish::getCalories));
 //		System.out.println(avg);
