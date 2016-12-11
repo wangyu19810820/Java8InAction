@@ -38,13 +38,13 @@ public class TestSum {
 	}
 	
 	public static void main(String[] args) {
-		final long v = 10_000_000L;
+		final long v = 100_000_000L;
 //		long t1 = TestFuncTime.measureSumperf(TestSum::sumByStream, v);
-//		long t2 = TestFuncTime.measureSumperf(TestSum::sumByFor, v);
+		long t2 = TestFuncTime.measureSumperf(TestSum::sumByFor, v);
 //		long t3 = TestFuncTime.measureSumperf(TestSum::sumByObjectStream, v);
 		long t4 = TestFuncTime.measureSumperf(TestSum::sumByWrongParallelStream, v);
 //		System.out.println("t1=" + t1);
-//		System.out.println("t2=" + t2);
+		System.out.println("t2=" + t2);
 //		System.out.println("t3=" + t3);
 		System.out.println("t4=" + t4);
 	}
