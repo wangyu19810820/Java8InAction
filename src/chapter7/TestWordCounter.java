@@ -32,11 +32,11 @@ public class TestWordCounter {
 			int middle = (string.length() + currentChar) / 2;
 			for (int i = middle; i < string.length(); i++) {
 				if (Character.isWhitespace(string.charAt(i))) {
-					String subStr = string.substring(currentChar, i - 1);
+					String subStr = string.substring(currentChar, i);
 					currentChar = i;
-					System.out.println(currentChar);
 					Spliterator<Character> s = new WordCounterSpliterator(subStr);
 //					System.out.println(subStr);
+//					System.out.println(string.substring(currentChar));
 					return s;
 				}
 			}
